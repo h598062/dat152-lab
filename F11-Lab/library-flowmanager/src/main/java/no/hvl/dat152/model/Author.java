@@ -4,24 +4,24 @@ package no.hvl.dat152.model;
  * @author tdoy
  */
 public class Author {
-	
+
 	private int authorId;
-	
+
 	private String firstname;
-	
+
 	private String lastname;
 
 	public Author(String firstname, String lastname) {
 		this.firstname = firstname;
-		this.lastname = lastname;
+		this.lastname  = lastname;
 	}
-	
+
 	public Author(int authorid, String firstname, String lastname) {
-		this.authorId = authorid;
+		this.authorId  = authorid;
 		this.firstname = firstname;
-		this.lastname = lastname;
+		this.lastname  = lastname;
 	}
-	
+
 	/**
 	 * @return the authorId
 	 */

@@ -1,6 +1,3 @@
-/**
- *
- */
 package no.hvl.dat152.action;
 
 import jakarta.servlet.ServletException;
@@ -9,32 +6,27 @@ import jakarta.servlet.http.HttpServletResponse;
 import no.hvl.dat152.dao.AuthorDAO;
 import no.hvl.dat152.dao.BookDAO;
 import no.hvl.dat152.model.Author;
-import no.hvl.dat152.model.Book;
 
 import java.io.IOException;
-import java.util.List;
 
-/**
- *
- */
-public class UpdateBookFormAction implements ControllerAction {
+public class DeleteBookAction implements ControllerAction {
 
 	@Override
 	public int execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		String authorid = request.getParameter("authorid");
 		String isbn = request.getParameter("isbn");
 
-		BookDAO bookDAO = new BookDAO();
-		Book    book    = bookDAO.getBookByISBN(isbn);
-		request.setAttribute("book", book);
+		int id = Integer.parseInt(authorid);
 
-		// collect authors
-		AuthorDAO    dao     = new AuthorDAO();
-		List<Author> authors = dao.getAllAuthors();
-		request.setAttribute("authors", authors);
+		/* AuthorDAO adao = new AuthorDAO();
+		Author    author = adao.getAuthorByID(id); */
+
+
+		BookDAO bdao = new BookDAO();
+		bdao.deleteBook(isbn);
 
 		return ControllerAction.SUCCESS;
 
 	}
-
 }

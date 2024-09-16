@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package no.hvl.dat152.model;
 
@@ -11,17 +11,18 @@ package no.hvl.dat152.model;
 public class Book {
 
 
-	private String isbn;	
+	private String isbn;
 
 	private String title;
-	
+
 	private int authorId;
-	
+
 	public Book(String isbn, String title, int authorId) {
-		this.isbn = isbn;
-		this.title = title;
+		this.isbn     = isbn;
+		this.title    = title;
 		this.authorId = authorId;
 	}
+
 	/**
 	 * @return the isbn
 	 */
@@ -64,8 +65,8 @@ public class Book {
 		this.authorId = authorId;
 	}
 
-    @Override
-    public String toString() {
-        return "Book [isbn=" + isbn + ", title=" + title + ", authorId=" + authorId + "]";
-    }
+	@Override
+	public String toString() {
+		return "Book [isbn=" + isbn + ", title=" + title + ", authorId=" + authorId + "]";
+	}
 }
