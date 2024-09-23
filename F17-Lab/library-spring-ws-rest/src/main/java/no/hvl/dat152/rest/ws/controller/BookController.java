@@ -28,7 +28,19 @@ public class BookController {
 
 	@Autowired
 	private BookService bookService;
-	
+
+	@PostMapping("/updateBook")
+	public ResponseEntity<Object> updateBook(@RequestBody Book book) throws BookNotFoundException {
+		Book nbook = bookService.updateBook(book);
+		return new ResponseEntity<>(nbook, HttpStatus.OK);
+	}
+
+	@PostMapping("/deleteBook/{isbn}")
+	public ResponseEntity<Object> deleteBook(@PathVariable("isbn") String isbn) throws BookNotFoundException {
+		bookService.deleteByISBN(isbn);
+		return new ResponseEntity<>("deleted", HttpStatus.OK);
+	}
+
 	@GetMapping("/books")
 	public ResponseEntity<Object> getAllBooks(){
 		

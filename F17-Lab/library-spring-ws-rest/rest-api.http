@@ -1,0 +1,48 @@
+### Test the books api endpoint
+GET http://localhost:8090/elibrary/api/v1/books
+Accept: application/json
+
+### Get specific book
+@isbn1 = ghijk1234
+GET http://localhost:8090/elibrary/api/v1/books/{{isbn1}}
+Accept: application/json
+
+### Create new book
+POST http://localhost:8090/elibrary/api/v1/books
+Accept: application/json
+Content-Type: application/json
+
+{
+  "isbn": "test123",
+  "title": "The test of testing",
+  "authors": [
+    {
+      "authorId": 1,
+      "firstname": "Shari",
+      "lastname": "Pfleeger"
+    }
+  ]
+}
+
+### Update book
+POST http://localhost:8090/elibrary/api/v1/updateBook
+Accept: application/json
+Content-Type: application/json
+
+{
+  "id": 3,
+  "isbn": "test123",
+  "title": "The testering of testing",
+  "authors": [
+    {
+      "authorId": 1,
+      "firstname": "Shari",
+      "lastname": "Pfleeger"
+    }
+  ]
+}
+
+### Delete book
+@isbn2 = test123
+POST http://localhost:8090/elibrary/api/v1/deleteBook/{{isbn2}}
+Accept: application/json
