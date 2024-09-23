@@ -75,14 +75,14 @@ public class BookService {
 	}
 	
 	/**
-	 * TODO
+	 *
 	 * @param id
 	 * @throws BookNotFoundException
 	 */
 	public void deleteBookById(long id) throws BookNotFoundException {
 		
-		// TODO
-
+		Book book = bookRepository.findById(id).orElseThrow(() -> new BookNotFoundException("Book with id = "+id+" not found"));
+		bookRepository.delete(book);
 	}
 	
 	private Book findBookById(long id) throws BookNotFoundException {

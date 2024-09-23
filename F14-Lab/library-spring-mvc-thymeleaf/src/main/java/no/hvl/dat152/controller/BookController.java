@@ -9,11 +9,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import no.hvl.dat152.exceptions.BookNotFoundException;
 import no.hvl.dat152.exceptions.UpdateBookFailedException;
@@ -38,6 +34,14 @@ public class BookController {
 	public String defaultView() {
 		
 		return "index";
+	}
+
+	@GetMapping("/deletebook")
+	public String postDeleteBook(Model model, @RequestParam long id) throws BookNotFoundException {
+		bookService.deleteBookById(id);
+		List<Book> books = bookService.findAll();
+		model.addAttribute("books", books);
+		return "redirect:viewbooks";
 	}
 	
 	@RequestMapping(value="/viewbooks", method=RequestMethod.GET)
@@ -77,8 +81,6 @@ public class BookController {
 		
 		return "redirect:viewbooks";
 	}
-	
-	// TODO - deleteBook()
 	
 	@GetMapping("/updatebook")
 	public String updateBook(@RequestParam Long id, Model model) throws BookNotFoundException {
